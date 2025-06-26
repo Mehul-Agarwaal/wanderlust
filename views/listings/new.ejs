@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderlust</title>
+    <link rel="stylesheet">
+</head>
+<body>
+    <h3>Create a new listing</h3>
+    <form action="/listings" method="post">
+        <input type="text" name="listing[title]" id="" placeholder="enter title"><br><br><br>
+        <textarea name="listing[description]" id="" placeholder="enter description"></textarea><br><br><br>
+        <input type="number" name="listing[price]" id="" placeholder="enter price"><br><br><br>
+        <input type="text" name="listing[location]" id="" placeholder="enter location"><br><br><br>
+        <input type="text" name="listing[country]" id="" placeholder="enter country"><br><br><br>
+        <input type="text" name="listing[image][url]" id="" placeholder="enter image url"><br><br><br>
+        <button  style="padding: 16px 24px;border-radius: 30px;background-color: rgb(239, 15, 41);color: white; font-weight: 500; font-size: larger;" >Submit</button>
+
+    </form>
+</body>
+</html>

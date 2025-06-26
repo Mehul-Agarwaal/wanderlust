@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderLust</title>
+</head>
+<body style="background-color: #333; color: wheat;">
+    <h3>All Listings</h3>
+    <!-- new listing  -->
+    <form action="/listings/new" method="get">
+        <button  style="padding: 16px 24px;border-radius: 30px;background-color: rgb(239, 15, 41);color: white; font-weight: 500; font-size: larger;border: none;box-shadow: goldenrod 5px;">Create new listing</button>
+    </form>
+    <br><br><br>
+
+    <!-- all listings -->
+    <%for(let listing of allListings){%>
+        <li><a href="/listings/<%=listing._id%>" style="text-decoration: none;color: beige;"><%=listing.title%></a></li><br>
+    <%}%>
+
+</body>
+</html>
+
