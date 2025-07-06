@@ -1,9 +1,10 @@
-<%layout("/layouts/boilerplate.ejs")%>
+<% layout('/layouts/boilerplate.ejs') %>
+
 
 <div class="row">
   <div class="col-8 offset-2">
     <h3>Create a new listing</h3>
-    <form action="/listings" method="post">
+    <form action="/listings" method="post" novalidate class="needs-validation">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -12,7 +13,10 @@
           placeholder="enter title"
           class="form-control"
           id="title"
+          required
         />
+        <div class="valid-feedback">Title looks good!</div>
+        <div class="invalid-feedback">Title is not good!</div>
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
@@ -21,11 +25,13 @@
           placeholder="enter description"
           class="form-control"
           id="description"
+          required
         ></textarea>
+        <div class="valid-feedback">Description is good!</div>
+        <div class="invalid-feedback">Description is not good!</div>
       </div>
 
       <div class="row">
-
         <div class="mb-3 col-md-4">
           <label for="price" class="form-label">Price</label>
           <input
@@ -34,7 +40,10 @@
             placeholder="enter price"
             class="form-control"
             id="price"
+            required
           />
+          <div class="valid-feedback">Price looks good!</div>
+          <div class="invalid-feedback">Price is not good!</div>
         </div>
 
         <div class="mb-3 col-md-8">
@@ -45,9 +54,12 @@
             placeholder="enter country"
             class="form-control"
             id="country"
-          />
-        </div>
+            required
 
+          />
+          <div class="valid-feedback"> looks good!</div>
+        <div class="invalid-feedback"> Fill in country!</div>
+        </div>
       </div>
 
       <div class="mb-3">
@@ -58,7 +70,10 @@
           placeholder="enter location"
           class="form-control"
           id="location"
+          required
         />
+        <div class="valid-feedback"> looks good!</div>
+        <div class="invalid-feedback">Location is not correct!</div>
       </div>
 
       <div class="mb-3">
@@ -72,8 +87,8 @@
         />
       </div>
       <br />
-      <button class=" btn btn-dark add-btn">Add</button>
-      <br><br><br>
+      <button class="btn btn-dark add-btn">Add</button>
+      <br /><br /><br />
     </form>
   </div>
 </div>
