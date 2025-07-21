@@ -6,6 +6,9 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
+const session = require("express-session");
+const flash = require("connect-flash");
+
 
 //router
 const listings = require("./routes/listing.js");
@@ -28,10 +31,33 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+ 
+//session
+const sessionOptions = {
+    secret: "secretSessionCode",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now()+ 7*24*60*60*1000,
+        maxAge: 7*24*60*60*1000,
+        httpOnly: true,
+    }
+};
 
 app.get("/", (req, res) => {
     res.send("Working");
 });
+
+//project phase2 partc
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use((req,res,next)=>{
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
+})
+
 
 //listing routes
 app.use("/listings",listings);
