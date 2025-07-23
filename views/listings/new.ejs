@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-8 offset-2">
     <h3>Create a new listing</h3>
-    <form action="/listings" method="post" novalidate class="needs-validation">
+    <form action="/listings" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -76,14 +76,15 @@
         <div class="invalid-feedback">Location is not correct!</div>
       </div>
 
-      <div class="mb-3">
-        <label for="imageurl" class="form-label">Image-URL</label>
+      
+
+       <div class="mb-3">
+        <label for="image" class="form-label">Upload  Image</label>
         <input
-          type="text"
-          name="listing[image][url]"
-          placeholder="enter image url"
+          type="file"
+          name="listing[image]"
           class="form-control"
-          id="imageurl"
+          id="image"
         />
       </div>
       <br />
