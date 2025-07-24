@@ -52,9 +52,9 @@ const sessionOptions = {
     }
 };
 
-app.get("/", (req, res) => {
-    res.send("Working");
-});
+// app.get("/", (req, res) => {
+//     res.send("Working");
+// });
 
 //project phase2 partc
 app.use(session(sessionOptions));
