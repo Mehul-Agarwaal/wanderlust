@@ -25,7 +25,7 @@ router.route("/:id")
     //show route
     .get( wrapAsync(listingControllers.showListings))
     //edit route
-    .patch(isLoggedIn,isOwner,validateListing, wrapAsync(listingControllers.edit))
+    .patch(isLoggedIn,isOwner,upload.single("listing[image]"),validateListing, wrapAsync(listingControllers.edit))
     //delete route
     .delete(isLoggedIn,isOwner ,wrapAsync(listingControllers.delete));
 
