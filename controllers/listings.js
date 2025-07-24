@@ -1,4 +1,8 @@
+
 const Listing = require("../models/listing");
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const mapToken = process.env.MAP_TOKEN;
+const geoCodingClient = mbxGeocoding({accessToken: mapToken});
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
@@ -27,13 +31,24 @@ module.exports.showListings = async (req, res) => {
 };
 
 module.exports.createListing = async (req, res) => {
+    let response = await geoCodingClient.forwardGeocode({
+        query:req.body.listing.location,
+        limit: 1
+    })
+    .send();
+
+
+    
+    
     let url = req.file.path;
     let filename= req.file.filename;
     
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id;
     newListing.image = {url,filename};
-    await newListing.save();
+    newListing.geometry = response.body.features[0].geometry;
+    let savedListing = await newListing.save();
+    console.log(savedListing);
    
     req.flash("success","Listing saved successfully");
     res.redirect("/listings");
@@ -54,18 +69,44 @@ module.exports.editGet = async (req, res) => {
 };
 
 module.exports.edit = async (req, res) => {
-    let { id } = req.params;
-   
-    let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
-    if(typeof req.file !== "undefined"){
-    let url = req.file.path;
-    let filename = req.file.filename;
-    listing.image = {url,filename}
-    await listing.save();
+    const { id } = req.params;
+
+    let listing = await Listing.findById(id);
+
+    // Update fields
+    listing.title = req.body.listing.title;
+    listing.description = req.body.listing.description;
+    listing.price = req.body.listing.price;
+    listing.location = req.body.listing.location;
+    listing.country = req.body.listing.country;
+
+    // Re-geocode
+    if (req.body.listing.location) {
+        const response = await geoCodingClient.forwardGeocode({
+            query: req.body.listing.location,
+            limit: 1
+        }).send();
+
+        if (response.body.features.length > 0) {
+            listing.geometry = response.body.features[0].geometry;
+        } else {
+            console.log("No geocode result found");
+        }
     }
-    req.flash("success","edited the listing successfully")
+
+    // Update image if provided
+    if (typeof req.file !== "undefined") {
+        listing.image = {
+            url: req.file.path,
+            filename: req.file.filename
+        };
+    }
+
+    await listing.save(); // 💥 Must always be called
+    req.flash("success", "Edited the listing successfully");
     res.redirect(`/listings/${id}`);
 };
+
 
 module.exports.delete = async (req, res) => {
     let { id } = req.params;
