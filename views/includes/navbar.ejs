@@ -22,7 +22,6 @@
 
 </style>
 
-
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top" >
   <div class="container-fluid">
     <a class="navbar-brand" href="/listings"><i class="fa-solid fa-compass"></i></a>
@@ -36,8 +35,8 @@
         
       </div>
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 search-inp" type="search" placeholder="Search Destinations" aria-label="Search"/>
+        <form class="d-flex" role="search" action="/listings/search" method="get" >
+          <input class="form-control me-2 search-inp" type="search" placeholder="Search Destinations by country" aria-label="Search" name="country"/>
           <button class="btn search-btn" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>Search
           </button>

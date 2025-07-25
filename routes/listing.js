@@ -20,6 +20,8 @@ router
 
 router.get("/new",isLoggedIn, listingControllers.renderNewForm);
 
+router.get("/search",listingControllers.searchListings);
+
 
 router.route("/:id")
     //show route
@@ -32,6 +34,8 @@ router.route("/:id")
 
 //edit get route
 router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(listingControllers.editGet));
+
+
 
 
 module.exports = router;
