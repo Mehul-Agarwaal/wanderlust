@@ -71,6 +71,18 @@
         </div>
 
         <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <select name="listing[category]" id="category" class="form-select" required>
+            <% const categories = ['Trending', 'Rooms', 'Iconic Cities', 'Mountains', 'Castle', 'Amazing pools', 'Camping', 'Farms', 'Arctic', 'Beaches', 'Domes']; %>
+            <% for(let category of categories) { %>
+              <option value="<%= category %>" <%= listing.category === category ? 'selected' : '' %>>
+                  <%= category %>
+              </option>
+            <% } %>
+          </select>
+        </div>
+
+        <div class="mb-3">
           <label for="location" class="form-label">Location</label>
           <input
             type="text"

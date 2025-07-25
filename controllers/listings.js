@@ -37,7 +37,10 @@ module.exports.createListing = async (req, res) => {
     })
     .send();
 
-
+    if (!response || !response.body || !response.body.features || response.body.features.length === 0) {
+        req.flash("error", "Invalid location. Please provide a valid address.");
+        return res.redirect("/listings/new");
+    }
     
     
     let url = req.file.path;
@@ -79,6 +82,7 @@ module.exports.edit = async (req, res) => {
     listing.price = req.body.listing.price;
     listing.location = req.body.listing.location;
     listing.country = req.body.listing.country;
+    listing.category = req.body.listing.category;
 
     // Re-geocode
     if (req.body.listing.location) {

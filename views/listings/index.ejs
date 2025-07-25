@@ -34,53 +34,80 @@
         display: flex;
         align-items: center;
     }
+    a{
+        text-decoration: none;
+        color: #333;
+    }
 </style>
 
 
     <div id="filters">
+        
         <div class="filter">
+            <a href="/filters/Trending">
             <div><i class="fa-solid fa-fire"></i></div>
             <p>Trending</p>
+            </a>
         </div>
         <div class="filter">
+            <a href="/filters/Rooms">
             <div><i class="fa-solid fa-bed"></i></div>
             <p>Rooms</p>
+            </a>
         </div>
         <div class="filter">
+            <a href="/filters/Iconoc%20Cities">
             <div><i class="fa-solid fa-mountain-city"></i></div>
             <p>Iconic Cities</p>
+            </a>
         </div>
         <div class="filter">
+            <a href="/filters/Mountains">
             <div><i class="fa-solid fa-mountain"></i></div>
             <p>Mountains</p>
+            </a>
         </div>
         <div class="filter">
+            <a href="/filters/Castle">
             <div><i class="fa-solid fa-fort-awesome"></i></div>
             <p>Castle</p>
+            </a>
         </div>
         <div class="filter">
+            <a href="/filters/Amazing%20pools">
             <div><i class="fa-solid fa-person-swimming"></i></div>
             <p>Amazing pools</p>
+            </a>
         </div>
         <div class="filter">
+            <a href="/filters/Camping">
             <div><i class="fa-solid fa-campground"></i></div>
             <p>Camping</p>
+            </a>
         </div>
         <div class="filter">
+            <a href="/filters/farms">
             <div><i class="fa-solid fa-cow"></i></div>
             <p>farms</p>
+            </a>
         </div>
         <div class="filter">
+            <a href="/filters/Arctic">
             <div><i class="fa-solid fa-snowflake"></i></div>
             <p>Arctic</p>
+            </a>
         </div>
         <div class="filter">
+            <a href="/filters/Beaches">
             <div><i class="fa-solid fa-umbrella-beach"></i></div>
             <p>Beaches</p>
+            </a>
         </div>
         <div class="filter">
+            <a href="/filters/Domes">
             <div><i class="fa-solid fa-igloo"></i></div>
             <p>Domes</p>
+            </a>
         </div>
         
         <div class="tax-toggle">
@@ -94,9 +121,10 @@
     <div class="row row-cols-lg-3 row-col-md-2 row-cols-sm-1 mt-3">
 
         <%for(let listing of allListings){%>
+            <div class="col mb-4">
             <a href="/listings/<%=listing._id%>">
-            <div class="card col listing-card"  >
-                <img src="<%=listing.image.url%>" class="card-img-top" alt="<%=listing.image.filename%> " style="height: 20rem;">
+            <div class="card  listing-card h-100"  >
+                <img src="<%=listing.image.url%>" class="card-img-top" alt="<%=listing.image.filename%> " style="height: 20rem;width: 100%; object-fit: cover;">
                 <div class="card-img-overlay"></div>
                 <div class="card-body">
                     <p class="card-text">
@@ -107,6 +135,7 @@
                 </div>
             </div>
             </a>
+            </div>
         <%}%>
 
     </div>
