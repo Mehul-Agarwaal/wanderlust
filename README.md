@@ -95,12 +95,6 @@ Make sure you have the following installed on your system:
 
 ---
 
-## 📄 License
-
-This project can be used under the MIT License. See the `LICENSE` file for more details. *(Suggestion: Add a LICENSE file to your repository for clarity).*
-
----
-
 ## 👤 Author
 
 **Mehul Agarwal**
