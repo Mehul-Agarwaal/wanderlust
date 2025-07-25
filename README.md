@@ -6,7 +6,7 @@ Wanderlust is a full-stack web application inspired by Airbnb. It allows users t
 [![GitHub language count](https://img.shields.io/github/languages/count/Mehul-Agarwaal/wanderlust?style=flat-square)](https://github.com/Mehul-Agarwaal/wanderlust)
 [![GitHub last commit](https://img.shields.io/github/last-commit/Mehul-Agarwaal/wanderlust?style=flat-square)](https://github.com/Mehul-Agarwaal/wanderlust)
 
-**Live Demo:** [Link to your deployed application] *(You can add your deployment link here)*
+**Live Demo:** [Click here] *(https://wanderlust-krt7.onrender.com)*
 
 ---
 
