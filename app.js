@@ -108,6 +108,9 @@ app.use((req,res,next)=>{
 //     let registeredUser = await User.register(fakeUser,"abcd");
 //     res.send(registeredUser);
 // });
+app.get("/",(req,res)=>{
+    res.redirect("/listings");
+})
 
 
 //listing routes
